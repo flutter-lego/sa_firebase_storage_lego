@@ -21,6 +21,9 @@ dependencies:
   flutter_screenutil:
   bot_toast:
   firebase_core:
+  firebase_storage: #@add
+  path: #@add
+  path_provider: #@add
 
 dev_dependencies:
   flutter_test:
@@ -29,7 +32,7 @@ dev_dependencies:
   screenutil_lego: #@add
   bot_toast_lego: #@add
   widget_binding_lego: #@add
-  firebase_core_lego:
+  firebase_core_lego: #@add
 
 flutter:
   assets:

@@ -1,11 +1,39 @@
 import 'package:flutter/material.dart';
 
+import '../../../app/backend/firebase_stoarge.with_id/_new.dart';
 import '../../../main.dart';
+
+import 'dart:io';
+import 'dart:convert';
+import 'dart:typed_data';
+import 'package:firebase_storage/firebase_storage.dart';
+import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 
 String _noteName = "Note";
 
 T _button00 = T("00", onTap: (BuildContext context) async {
   ////////////////////////////////////////
+
+  NewFirebaseStorage storage = NewFirebaseStorage();
+
+  // 1. 문자열 파일 생성
+  String fileName = "example.txt";
+  String content = "Hello, Firebase Storage!";
+  Uint8List data = Uint8List.fromList(utf8.encode(content));
+
+  // 2. 파일 업로드
+  await storage.set(fileName, data);
+  print("File uploaded successfully.");
+
+  // 3. 파일 다운로드
+  Uint8List? downloadedData = await NewFirebaseStorage.get(fileName);
+  if (downloadedData != null) {
+    String downloadedContent = utf8.decode(downloadedData);
+    print("Downloaded content: $downloadedContent");
+  } else {
+    print("Failed to download the file.");
+  }
 
   ////////////////////////////////////////
 });
